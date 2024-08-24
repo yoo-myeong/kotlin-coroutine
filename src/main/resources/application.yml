@@ -1,0 +1,13 @@
+server:
+  port: 3001
+
+spring:
+  application:
+    name: coroutine
+  output:
+    ansi:
+      enabled: always
+  r2dbc:
+    url: r2dbc:mariadb://localhost:3310/sample
+    username: user
+    password: 1234

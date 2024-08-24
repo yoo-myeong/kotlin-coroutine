@@ -1,0 +1,17 @@
+version: "3.2"
+services:
+  db:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    ports:
+      - "3310:3306"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - ./data:/var/lib/mysql
+    environment:
+      MARIA_ROOT_PASSWORD : root
+      MARIA_DATABASE      : sample
+      MARIA_USER          : user
+      MARIA_PASSWORD      : 1234
