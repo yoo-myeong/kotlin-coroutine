@@ -11,3 +11,18 @@ spring:
     url: r2dbc:mariadb://localhost:3310/sample
     username: user
     password: 1234
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db-init/schema.sql
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  r2dbc:
+    url: r2dbc:pool:h2:mem://localhost/sample
+  sql:
+    init:
+      mode: embedded
